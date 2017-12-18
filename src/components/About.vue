@@ -1,19 +1,15 @@
 <template>
   <div class="hello">
-    <b-tabs>
-      <b-tab title="Home" active>
-        Home content goes here
-      </b-tab>
-    </b-tabs>
+    This is the about page
   </div>
 </template>
 
 <script>
 export default {
-  name: 'VegapieHome',
+  name: 'About',
   data() {
     return {
-      msg: 'Melissa',
+      tabs: [],
     };
   },
 };

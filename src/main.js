@@ -3,14 +3,15 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
-import * as axios from 'axios';
 import Vue from 'vue';
 import BootstrapVue from 'bootstrap-vue';
+import Toasted from 'vue-toasted';
 import App from './App';
 import router from './router';
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
+Vue.use(Toasted);
 
 /* eslint-disable no-new */
 new Vue({
@@ -18,16 +19,4 @@ new Vue({
   router,
   template: '<App/>',
   components: { App },
-});
-
-axios.post('https://vegapie-recipe-server.herokuapp.com/addRecipe', {
-  params: {
-    ID: 12345,
-  },
-})
-.then((response) => {
-  console.log(response);
-})
-.catch((error) => {
-  console.log(error);
 });
