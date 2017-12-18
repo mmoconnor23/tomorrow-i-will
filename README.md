@@ -30,5 +30,6 @@ npm test
 ## Resources
 * https://bootstrap-vue.js.org/docs/components
 * https://github.com/mmoconnor23/recipe-server
+* https://github.com/shakee93/vue-toasted
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
