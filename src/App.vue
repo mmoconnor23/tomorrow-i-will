@@ -25,13 +25,13 @@
       </b-collapse>
     </b-navbar>
 
-    <router-view/>
+    <router-view class="app-content"/>
 
-    <b-btn id="add-popover" variant="primary">+</b-btn>
-        <b-popover ref="add-recipe-popover" style="width: 300px" target="add-popover">
-           <template slot="title">Add a Recipe</template>
-           <add-recipe></add-recipe>
-        </b-popover>
+    <!--<b-btn id="add-popover" variant="primary">+</b-btn>
+    <b-popover ref="add-recipe-popover" style="width: 300px" target="add-popover">
+        <template slot="title">Add a Recipe</template>
+        <add-recipe></add-recipe>
+    </b-popover>-->
   </div>
 </template>
 
@@ -53,6 +53,9 @@ export default {
         }, {
           title: 'About',
           route: '/about',
+        }, {
+          title: 'Add Recipe',
+          route: '/addRecipe',
         },
       ],
     };
@@ -65,7 +68,10 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+}
+
+.app-content {
+  margin: 10px;
 }
 </style>

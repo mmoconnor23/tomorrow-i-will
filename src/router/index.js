@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from '@/components/Home';
 import About from '@/components/About';
 import Recipes from '@/components/Recipes';
+import AddRecipe from '@/components/AddRecipe';
 
 Vue.use(Router);
 
@@ -21,6 +22,10 @@ export default new Router({
       path: '/recipes',
       name: 'Recipes',
       component: Recipes,
+    }, {
+      path: '/addRecipe',
+      name: 'Add Recipe',
+      component: AddRecipe,
     },
   ],
 });
