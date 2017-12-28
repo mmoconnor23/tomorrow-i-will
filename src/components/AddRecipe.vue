@@ -83,6 +83,9 @@
 
 <script>
 import * as axios from 'axios';
+import { recipeData } from '../services/recipeData';
+
+const categoryOptions = recipeData.getCategories().map(category => category.display);
 
 const startingForm = {
   categories: [],
@@ -133,15 +136,7 @@ export default {
         this.form = Object.assign({}, startingForm);
       },
       form: Object.assign({}, startingForm),
-      categoryOptions: [
-        'Appetizer',
-        'Dessert',
-        'Pasta',
-        'Soup',
-        'Casserole',
-        'Sandwich',
-        'Entree',
-      ],
+      categoryOptions,
     };
   },
 };
