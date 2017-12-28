@@ -28,7 +28,7 @@ class RecipeData {
     // TODO: add familyId
     this.recipes = [
       {
-        title: 'Sample Recipe Title 0',
+        title: 'Spinach and Artichoke Dip',
         contributor: 'Melissa O\'Connor',
         steps: ['Step 1', 'Step 2', 'Step 3'],
         ingredients: ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'],
@@ -38,7 +38,7 @@ class RecipeData {
         id: '0',
         description: 'This is a sample recipe. I will use it to test the styling of the display page.',
       }, {
-        title: 'Sample Recipe Title 1',
+        title: 'Cupcakes',
         contributor: 'Melissa O\'Connor',
         steps: ['Step 1', 'Step 2', 'Step 3'],
         ingredients: ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'],
@@ -48,7 +48,7 @@ class RecipeData {
         id: '1',
         description: 'This is a sample recipe. I will use it to test the styling of the display page.',
       }, {
-        title: 'Sample Recipe Title 2',
+        title: 'Green (Creamed Spinach) Noodles',
         contributor: 'Melissa O\'Connor',
         steps: ['Step 1', 'Step 2', 'Step 3'],
         ingredients: ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'],
@@ -58,7 +58,7 @@ class RecipeData {
         id: '2',
         description: 'This is a sample recipe. I will use it to test the styling of the display page.',
       }, {
-        title: 'Sample Recipe Title 3',
+        title: 'Cauliflower Soup',
         contributor: 'Melissa O\'Connor',
         steps: ['Step 1', 'Step 2', 'Step 3'],
         ingredients: ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'],
@@ -68,7 +68,7 @@ class RecipeData {
         id: '3',
         description: 'This is a sample recipe. I will use it to test the styling of the display page.',
       }, {
-        title: 'Sample Recipe Title 4',
+        title: 'Mexican-Style Zucchini Casserole',
         contributor: 'Melissa O\'Connor',
         steps: ['Step 1', 'Step 2', 'Step 3'],
         ingredients: ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'],
@@ -78,7 +78,7 @@ class RecipeData {
         id: '4',
         description: 'This is a sample recipe. I will use it to test the styling of the display page.',
       }, {
-        title: 'Sample Recipe Title 5',
+        title: 'Tomato, Mozzarella & Pesto Sandwich',
         contributor: 'Melissa O\'Connor',
         steps: ['Step 1', 'Step 2', 'Step 3'],
         ingredients: ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'],
@@ -88,7 +88,7 @@ class RecipeData {
         id: '5',
         description: 'This is a sample recipe. I will use it to test the styling of the display page.',
       }, {
-        title: 'Sample Recipe Title 6',
+        title: 'Grilled Cheese Sandwich',
         contributor: 'Melissa O\'Connor',
         steps: ['Step 1', 'Step 2', 'Step 3'],
         ingredients: ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'],

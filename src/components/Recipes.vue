@@ -22,8 +22,8 @@
     <div class="all-recipes">
       <input type="text"
              placeholder="Search..."
-             v-model="searchText">
-             <!--ng-change="ctrl.searchRecipes()">-->
+             v-model="searchText"
+             @keyup="searchRecipes">
 
       <div class="recipe-preview"
            v-for="recipe in recipes"
@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import { cloneDeep, every, filter } from 'lodash';
+import { cloneDeep, every, filter, sortBy } from 'lodash';
 import { recipeData } from '../services/recipeData';
 
 let myRecipes = [];
@@ -94,6 +94,16 @@ export default {
       if (this.isVegetarian) {
         this.recipes = filter(this.recipes, { isVegetarian: this.isVegetarian });
       }
+
+      this.recipes = sortBy(this.recipes, 'title');
+    },
+    searchRecipes() {
+      this.filterRecipes();
+      if (this.searchText.length) {
+        this.recipes = _.filter(this.recipes, (recipe) => {
+          return recipe.title.toLowerCase().includes(this.searchText.toLowerCase());
+        });
+      }
     },
   },
 };
@@ -112,8 +122,9 @@ export default {
   }
 
   .recipes-view .all-recipes {
-    position: relative;
+    position: absolute;
     left: 150px; /*same as categories width*/
+    right: 10px;
   }
 
   .recipes-view .all-recipes input {
