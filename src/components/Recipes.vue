@@ -13,8 +13,8 @@
       <hr/>
       <label>
         <input type="checkbox"
-                v-model="isVegetarian"
-                @change="filterRecipes">
+               v-model="isVegetarian"
+               @change="filterRecipes">
         Vegetarian?
       </label>
     </div>
@@ -30,19 +30,18 @@
            @mouseenter="setHovering(recipe.id, true)"
            @mouseleave="setHovering(recipe.id, false)">
         <div>
-          <b>{{recipe.title}}</b> - <i>{{recipe.contributor}}</i>
+          <b>{{recipe.title}}</b> - <i>{{recipe.contributor}} {{recipe.isHovering}}</i>
         </div>
         <div>
           <!--<img src="img/webicons-master/webicons/webicon-android.png">-->
           <span>{{recipe.description}}</span>
         </div>
 
-        <button type="button"
-                :v-show="isHovering"
-                class="btn btn-primary">
-                <!--@click="switchViewTo(recipe.id)">-->
+        <b-button type="button"
+                  :v-show="recipe.isHovering"
+                  :to="{ name: 'Recipe', params: { recipeId: recipe.id } }">
           See Full Recipe
-        </button>
+        </b-button>
       </div>
     </div>
   </div>
@@ -52,29 +51,28 @@
 import { cloneDeep, every, filter, sortBy } from 'lodash';
 import { recipeData } from '../services/recipeData';
 
-let myRecipes = [];
 let allRecipes = [];
-
-recipeData.getRecipes().then((recipes) => {
-  allRecipes = cloneDeep(recipes);
-  myRecipes = allRecipes;
-  this.recipes = allRecipes; // FIXME: figure out an elegant way to do this
-});
 
 export default {
   name: 'Recipes',
   data() {
+    recipeData.getRecipes().then((recipes) => {
+      allRecipes = cloneDeep(recipes);
+      this.recipes = sortBy(allRecipes, 'title'); // FIXME: figure out an elegant way to do this
+    });
+
     return {
       isHovering: false,
       isVegetarian: false,
       searchText: '',
       categories: recipeData.getCategories(),
-      recipes: myRecipes,
+      recipes: [],
       selectedCategories: [],
     };
   },
   methods: {
     setHovering(id, isHovering) {
+      // TODO: try $set?
       const hovered = this.recipes.find(recipe => recipe.id === id);
       hovered.isHovering = isHovering;
       this.isHovering = isHovering;
@@ -105,6 +103,9 @@ export default {
         });
       }
     },
+    navigateTo(recipeId) {
+      console.log(recipeId);
+    }
   },
 };
 </script>
