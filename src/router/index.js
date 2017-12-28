@@ -26,6 +26,9 @@ export default new Router({
       path: '/addRecipe',
       name: 'Add Recipe',
       component: AddRecipe,
+    }, {
+      path: '*',
+      redirect: '/home',
     },
   ],
 });
