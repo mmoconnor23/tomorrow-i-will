@@ -106,7 +106,7 @@ class RecipeData {
   }
 
   getRecipes() {
-    return this.recipes;
+    return Promise.resolve(this.recipes);
   }
 }
 

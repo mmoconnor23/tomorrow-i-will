@@ -1,23 +1,22 @@
 <template>
   <div class="recipes-view">
     <div class="categories">
-      <div v-for="category in categories"
-           @click="filterByCategory">
-          <label>
-              <input type="checkbox" 
-                     :v-model="selectedCategories[category.value]">
-                {{category.display}}
-          </label>
-        </div>
-
-        <!--TODO: put divider between other categories and vegetarian flag-->
-
+      <div v-for="category in categories">
         <label>
-          <input type="checkbox" 
-                 :v-model="isVegetarian"
-                 @click="filterVegetarian">
-          Vegetarian
+            <input type="checkbox"
+                   :value="category.value"
+                   v-model="selectedCategories"
+                   @change="filterRecipes">
+              {{category.display}}
         </label>
+      </div>
+      <hr/>
+      <label>
+        <input type="checkbox"
+                v-model="isVegetarian"
+                @change="filterRecipes">
+        Vegetarian?
+      </label>
     </div>
 
     <div class="all-recipes">
@@ -38,42 +37,64 @@
           <span>{{recipe.description}}</span>
         </div>
 
-        <button type="button" 
+        <button type="button"
                 :v-show="isHovering"
-                class="btn btn-primary"> 
+                class="btn btn-primary">
                 <!--@click="switchViewTo(recipe.id)">-->
           See Full Recipe
         </button>
       </div>
-    </div>	
+    </div>
   </div>
 </template>
 
 <script>
+import { cloneDeep, every, filter } from 'lodash';
 import { recipeData } from '../services/recipeData';
+
+let myRecipes = [];
+let allRecipes = [];
+
+recipeData.getRecipes().then((recipes) => {
+  allRecipes = cloneDeep(recipes);
+  myRecipes = allRecipes;
+  this.recipes = allRecipes; // FIXME: figure out an elegant way to do this
+});
 
 export default {
   name: 'Recipes',
   data() {
     return {
       isHovering: false,
-      setHovering: (id, isHovering) => {
-        const hovered = this.recipes.find(recipe => recipe.id === id);
-        hovered.isHovering = isHovering;
-        this.isHovering = isHovering;
-      },
-      getIsHovering: (recipe) => {
-        console.log(recipe.isHovering);
-        return recipe.isHovering;
-      },
       isVegetarian: false,
       searchText: '',
       categories: recipeData.getCategories(),
-      recipes: recipeData.getRecipes(),
-      selectedCategories: {},
-      filterByCategory: () => {},
-      filterVegetarian: () => {},
+      recipes: myRecipes,
+      selectedCategories: [],
     };
+  },
+  methods: {
+    setHovering(id, isHovering) {
+      const hovered = this.recipes.find(recipe => recipe.id === id);
+      hovered.isHovering = isHovering;
+      this.isHovering = isHovering;
+    },
+    getIsHovering(recipe) {
+      return recipe.isHovering;
+    },
+    filterRecipes() {
+      /* eslint-disable */
+      this.recipes = filter(allRecipes, (recipe) => {
+        /* eslint-disable */
+        return every(this.selectedCategories, (category) => {
+          return recipe.categories.includes(category);
+        });
+      });
+
+      if (this.isVegetarian) {
+        this.recipes = filter(this.recipes, { isVegetarian: this.isVegetarian });
+      }
+    },
   },
 };
 </script>
@@ -85,13 +106,12 @@ export default {
   }
 
   .recipes-view .categories {
-    width: 20%;
     position: fixed;
     width: 150px;
+    padding-right: 10px;
   }
 
   .recipes-view .all-recipes {
-    width: 80%;
     position: relative;
     left: 150px; /*same as categories width*/
   }
