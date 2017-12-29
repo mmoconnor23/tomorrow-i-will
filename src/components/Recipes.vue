@@ -48,9 +48,20 @@
 </template>
 
 <script>
+import * as Fuse from 'fuse.js';
 import { cloneDeep, every, filter, sortBy } from 'lodash';
 import { recipeData } from '../services/recipeData';
 
+const searchOptions = {
+  shouldSort: true,
+  threshold: 0.5,
+  minMatchCharLength: 1,
+  keys: [
+    'title',
+    'description',
+    'ingredients',
+  ],
+};
 let allRecipes = [];
 
 export default {
@@ -97,10 +108,9 @@ export default {
     },
     searchRecipes() {
       this.filterRecipes();
+      const fuse = new Fuse(this.recipes, searchOptions);
       if (this.searchText.length) {
-        this.recipes = _.filter(this.recipes, (recipe) => {
-          return recipe.title.toLowerCase().includes(this.searchText.toLowerCase());
-        });
+        this.recipes = fuse.search(this.searchText);
       }
     },
     navigateTo(recipeId) {
