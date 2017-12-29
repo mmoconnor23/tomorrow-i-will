@@ -97,6 +97,26 @@ class RecipeData {
         isVegetarian: false,
         id: '6',
         description: 'This is a sample recipe. I will use it to test the styling of the display page.',
+      }, {
+        title: 'White Noodles',
+        contributor: 'Melissa O\'Connor',
+        steps: ['Step 1', 'Step 2', 'Step 3'],
+        ingredients: ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'],
+        pictures: ['img1', 'img2'],
+        categories: ['entree', 'pasta'],
+        isVegetarian: false,
+        id: '7',
+        description: 'This is a sample recipe. I will use it to test the styling of the display page.',
+      }, {
+        title: 'Baked Ziti',
+        contributor: 'Melissa O\'Connor',
+        steps: ['Step 1', 'Step 2', 'Step 3'],
+        ingredients: ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'],
+        pictures: ['img1', 'img2'],
+        categories: ['entree', 'pasta'],
+        isVegetarian: false,
+        id: '8',
+        description: 'This is a sample recipe. I will use it to test the styling of the display page.',
       },
     ];
   }

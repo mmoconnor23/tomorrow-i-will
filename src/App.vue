@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="md" type="dark" variant="info">
+    <b-navbar class="app-navbar"
+              toggleable="md"
+              type="dark"
+              variant="info">
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
       <b-navbar-brand to="/home">My Family Recipe</b-navbar-brand>
@@ -64,6 +67,10 @@ export default {
 </script>
 
 <style>
+body {
+  background: lightcyan;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -71,7 +78,19 @@ export default {
   color: #2c3e50;
 }
 
+.app-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
 .app-content {
+  position: absolute;
+  top: 56px;
+  left: 0;
+  right: 0;
   margin: 10px;
 }
 </style>

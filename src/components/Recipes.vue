@@ -133,12 +133,16 @@ export default {
   }
 
   .recipes-view .all-recipes {
-    position: absolute;
+    position: relative;
     left: 150px; /*same as categories width*/
-    right: 10px;
+    width: calc(100% - 150px);
   }
 
   .recipes-view .all-recipes input {
     width: 100%;
+  }
+
+  .recipe-preview {
+    padding: 5px 0;
   }
 </style>
