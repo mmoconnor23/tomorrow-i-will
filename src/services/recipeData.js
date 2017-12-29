@@ -1,3 +1,5 @@
+import { sortBy } from 'lodash';
+
 class RecipeData {
   constructor() {
     this.categories = [
@@ -126,7 +128,7 @@ class RecipeData {
   }
 
   getRecipes() {
-    return Promise.resolve(this.recipes);
+    return Promise.resolve(sortBy(this.recipes, 'title'));
   }
 }
 

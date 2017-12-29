@@ -99,7 +99,7 @@ export default {
         e.preventDefault();
 
         // FIXME: close popover after submission
-        this.$refs['add-recipe-popover'].$emit('close');
+        // this.$refs['add-recipe-popover'].$emit('close');
 
         axios.post('https://vegapie-recipe-server.herokuapp.com/addRecipe', {
           params: this.form,

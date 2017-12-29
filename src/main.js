@@ -8,6 +8,7 @@ import BootstrapVue from 'bootstrap-vue';
 import Toasted from 'vue-toasted';
 import App from './App';
 import router from './router';
+import * as store from './services/store';
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
@@ -17,6 +18,7 @@ Vue.use(Toasted);
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App },
 });

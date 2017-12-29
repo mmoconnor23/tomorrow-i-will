@@ -49,7 +49,7 @@
 
 <script>
 import * as Fuse from 'fuse.js';
-import { cloneDeep, every, filter, sortBy } from 'lodash';
+import { every, filter, sortBy } from 'lodash';
 import { recipeData } from '../services/recipeData';
 
 const searchOptions = {
@@ -62,24 +62,46 @@ const searchOptions = {
     'ingredients',
   ],
 };
-let allRecipes = [];
 
 export default {
   name: 'Recipes',
   data() {
-    recipeData.getRecipes().then((recipes) => {
-      allRecipes = cloneDeep(recipes);
-      this.recipes = sortBy(allRecipes, 'title'); // FIXME: figure out an elegant way to do this
-    });
-
     return {
       isHovering: false,
-      isVegetarian: false,
-      searchText: '',
       categories: recipeData.getCategories(),
-      recipes: [],
-      selectedCategories: [],
     };
+  },
+  computed: {
+    recipes() {
+      return this.$store.default.state.recipes;
+    },
+    allRecipes() {
+      return this.$store.default.state.allRecipes;
+    },
+    selectedCategories: {
+      get() {
+        return this.$store.default.state.selectedCategories;
+      },
+      set(newVal) {
+        this.$store.default.commit('setSelectedCategories', newVal);
+      },
+    },
+    searchText: {
+      get() {
+        return this.$store.default.state.searchText;
+      },
+      set(newVal) {
+        this.$store.default.commit('setSearchText', newVal);
+      },
+    },
+    isVegetarian: {
+      get() {
+        return this.$store.default.state.isVegetarian;
+      },
+      set(newVal) {
+        this.$store.default.commit('setIsVegetarian', newVal);
+      },
+    },
   },
   methods: {
     setHovering(id, isHovering) {
@@ -93,7 +115,7 @@ export default {
     },
     filterRecipes() {
       /* eslint-disable */
-      this.recipes = filter(allRecipes, (recipe) => {
+      let recipes = filter(this.allRecipes, (recipe) => {
         /* eslint-disable */
         return every(this.selectedCategories, (category) => {
           return recipe.categories.includes(category);
@@ -101,16 +123,19 @@ export default {
       });
 
       if (this.isVegetarian) {
-        this.recipes = filter(this.recipes, { isVegetarian: this.isVegetarian });
+        recipes = filter(recipes, { isVegetarian: this.isVegetarian });
       }
 
-      this.recipes = sortBy(this.recipes, 'title');
+      recipes = sortBy(recipes, 'title');
+
+      this.$store.default.commit('setRecipes', recipes);
     },
     searchRecipes() {
       this.filterRecipes();
       const fuse = new Fuse(this.recipes, searchOptions);
       if (this.searchText.length) {
-        this.recipes = fuse.search(this.searchText);
+        this.$store.default.commit('setRecipes', fuse.search(this.searchText));
+        // this.recipes = fuse.search(this.searchText);
       }
     },
     navigateTo(recipeId) {
