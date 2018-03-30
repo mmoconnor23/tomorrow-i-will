@@ -1,7 +1,7 @@
 {
-  "name": "family-recipe",
+  "name": "tomorrow-i-will",
   "version": "1.0.0",
-  "description": "A collection of family recipes",
+  "description": "An app to record your to-dos for tomorrow",
   "author": "Melissa O'Connor <mmoconnor23@gmail.com>",
   "private": true,
   "scripts": {
@@ -82,8 +82,8 @@
     "webpack-merge": "^4.1.0"
   },
   "engines": {
-    "node": ">= 4.0.0",
-    "npm": ">= 3.0.0"
+    "node": "8.11.0",
+    "npm": "5.6.0"
   },
   "browserslist": [
     "> 1%",

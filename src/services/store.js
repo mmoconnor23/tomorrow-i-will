@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { recipeData } from './recipeData';
 
 Vue.use(Vuex);
 
@@ -35,8 +34,8 @@ const store = new Vuex.Store({
   },
 });
 
-recipeData.getRecipes().then((recipes) => {
-  store.commit('FETCH_RECIPES', recipes);
-});
+// recipeData.getRecipes().then((recipes) => {
+//   store.commit('FETCH_RECIPES', recipes);
+// });
 
 export default store;

@@ -1,15 +1,19 @@
 <template>
-  <div class="hello">
-    This is the about page
+  <div>
+    <ul>
+      <li>checklist will go here</li>
+    </ul>
   </div>
 </template>
 
 <script>
+// import { find } from 'lodash';
+
 export default {
-  name: 'About',
+  name: 'Day',
   data() {
     return {
-      tabs: [],
+      recipe: {},
     };
   },
 };
@@ -17,5 +21,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.btn-category {
+  margin-right: 10px;
+}
 </style>

@@ -6,7 +6,7 @@
               variant="info">
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
-      <b-navbar-brand to="/home">My Family Recipe</b-navbar-brand>
+      <b-navbar-brand to="/home">Tomorrow I Will</b-navbar-brand>
 
       <b-collapse is-nav id="nav_collapse">
 
@@ -39,11 +39,10 @@
 </template>
 
 <script>
-import AddRecipe from '@/components/AddRecipe';
 
 export default {
   name: 'app',
-  components: { AddRecipe },
+  components: {},
   data() {
     return {
       tabs: [
@@ -51,14 +50,11 @@ export default {
           title: 'Home',
           route: '/home',
         }, {
-          title: 'Recipes',
-          route: '/recipes',
+          title: 'Days',
+          route: '/day',
         }, {
           title: 'About',
           route: '/about',
-        }, {
-          title: 'Add Recipe',
-          route: '/addRecipe',
         },
       ],
     };
