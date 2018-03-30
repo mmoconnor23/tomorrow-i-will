@@ -13,7 +13,7 @@ export default new Router({
       name: 'Home',
       component: Home,
     }, {
-      path: '/day/:date',
+      path: '/day',
       name: 'Day',
       component: Day,
     }, {

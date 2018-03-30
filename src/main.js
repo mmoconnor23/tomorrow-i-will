@@ -9,6 +9,9 @@ import Toasted from 'vue-toasted';
 import App from './App';
 import router from './router';
 import * as store from './services/store';
+// import * as dayData from './services/dayData';
+
+// dayData.addEntries();
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
