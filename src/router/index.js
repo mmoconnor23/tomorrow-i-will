@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/components/Home';
 import Day from '@/components/Day';
+import Profile from '@/components/Profile';
 
 Vue.use(Router);
 
@@ -16,6 +17,10 @@ export default new Router({
       path: '/day',
       name: 'Day',
       component: Day,
+    }, {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile,
     }, {
       path: '*',
       redirect: '/home',

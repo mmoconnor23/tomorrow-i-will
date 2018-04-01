@@ -20,10 +20,16 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-form>
-            <!--<b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search"/>-->
-            <!--<b-button size="sm" class="my-2 my-sm-0" type="submit">Add Recipe</b-button>-->
-          </b-nav-form>
+          <b-nav-item-dropdown right>
+            <!-- Using button-content slot -->
+            <template slot="button-content">
+              <img style="height:20px" src="src/assets/logo.png"/>
+              <em>User</em>
+            </template>
+            <b-dropdown-item to="profile">Profile</b-dropdown-item>
+            <b-dropdown-item to="home"
+                             @click="logOut">Log Out</b-dropdown-item>
+          </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -39,12 +45,16 @@
 </template>
 
 <script>
+import { appState } from './services/appState';
 
 export default {
   name: 'app',
   components: {},
   data() {
+    const isLoggedIn = appState.isLoggedIn();
+
     return {
+      isLoggedIn,
       tabs: [
         {
           title: 'Home',
@@ -57,6 +67,9 @@ export default {
           route: '/about',
         },
       ],
+      logOut: () => {
+        appState.onLogOut();
+      },
     };
   },
 };

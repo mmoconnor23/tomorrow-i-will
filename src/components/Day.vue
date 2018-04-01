@@ -26,20 +26,13 @@
 <script>
 import { uniqueId } from 'lodash';
 import * as moment from 'moment';
+import { dayData } from '../services/dayData';
+import { appState } from '../services/appState';
 
 export default {
   name: 'Day',
   data() {
-    const tasks = {
-      '3/29/2018': [
-        {
-          id: 'm1',
-          content: 'this is the first task',
-          isComplete: false,
-        },
-      ],
-    };
-
+    const tasks = dayData.getEntries(appState.getUserInfo().username);
     const today = moment().format('l');
 
     return {
